@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/有关于KMP算法的整体思路/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/有关于KMP算法的整体思路(1)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="秦墨涵">
@@ -281,7 +281,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/30/有关于KMP算法的整体思路/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2019/03/31/有关于KMP算法的整体思路(1)/" itemprop="url">Untitled</a></h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-30T22:56:42+08:00">
-                2019-03-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-31T20:29:21+08:00">
+                2019-03-31
               </time>
             
 
@@ -349,15 +349,146 @@
 <p>Next表的记录内容是什么？是我们每次的能够发生匹配的最大真前缀与最大真后缀。</p>
 <p><img src="https://img-blog.csdnimg.cn/20190330224344381.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>这里给出一个demo，你能不能根据上面的描述，写出这个对应的next表呢<br>这里的index是我们用来存放next数组的数组下标。<br>有了这个next表，我就知道了我们每次完全匹配的项的最大真前缀与真后缀。既然知道了几项是相同的，那么我怎么把前缀移动到后缀的位置呢，适配长度-最大真前缀长度 = 我们要跳过的距离，6 – 4 = 2，0 + 2 = 2。下一次我们就从数组的第二位开始进行比较 <em>（这样前四项都是相同的，即我们完成了最大匹配）</em></p>
-<p><strong>讨论：</strong> 我们呢什么时候开始移动呢？当然是我们在检查当中发现不匹配的时候，所以前其实我们最后指针指向的是我们发生失配的位置，那么我们就不得不返回前面的位置，才知道我们究竟匹配了几项，这使得我们每次都要通过-1进行访问，所以，我们干脆将next的末尾垫起一位，这样我们在失配项对应的就是匹配项对应的最大真前缀的长度。<br>我们在数组头部添加的项值位-1（有妙用,后面再说）。</p>
+<p><strong>讨论：</strong> 我们呢什么时候开始移动呢？当然是我们在检查当中发现不匹配的时候，所以前其实我们最后指针指向的是我们发生失配的位置，那么我们就不得不返回前面的位置，才知道我们究竟匹配了几项，这使得我们每次都要通过-1进行访问，所以，我们干脆将next的末尾垫起一位，这样我们在失配项对应的就是匹配项对应的最大真前缀的长度。<br>我们在数组头部添加的项值位-1 <em>（有妙用,后面再说）</em>。</p>
 <p>好了，现在我们尝试进行另外一种解释的方式，第一次我们是通过移动下面的pattern字符串进行解释的，但你不觉得有一些问题，我们还是会做一些无意义的比较，前面的几位都是相同的，我们之后需要比较的部位就是从我们的失配位置开始的，我们可以根据上面做一次等价的变换，移动两个位置，等同于让第四个位置与我们的失配位置的前一位进行对齐，这样我们就可以直接利用next 表中的值，进行移动。每次接着等到出现不一样了再向后进行回溯，毕竟我们在pattern串上的下标一直对应着对应的next。这样逐次进行逼近，直到失配成功，或者我们不断向前进行搜寻，直到第一位 -1.</p>
-<p><strong>p.s.妙用：</strong> 我们之前用的-1这里还是和之前一样+1，得到的就是0，这也是有意义的，证明找不到任何相同的前缀与后缀表达式，我们重新开始进行比较。<br>跳出循环之后，我们再进行后移一格的操作进行比较。<br><img src="https://img-blog.csdnimg.cn/20190330224628201.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>外层循环退出条件:</strong> 我们走到了队伍的尾部，如果还没找到，那这次模式匹配就是失败的，我们就要返回失败。<br><strong>内存循环:</strong> 如果发现队尾相同，我们就增长序列，不断地增长我们地匹配长度，直到匹配成功，退出循环，并返回相应的位置。或者出现了失配，我们就将模式串的指针进行修改，也就是将模式串向前移动，接着进行匹配。<br>然后我们要尝试填充next表 <em>（这能不能叫我们的初始化操作）</em></p>
+<p><strong>p.s.妙用：</strong> 我们之前用的-1这里还是和之前一样+1，得到的就是0，这也是有意义的，证明找不到任何相同的前缀与后缀表达式，我们重新开始进行比较。<br>跳出循环之后，我们再进行后移一格的操作进行比较。</p>
+<pre><code>int KMP(Pstr T, Pstr P,int *next){
+    int i = 0,j = 0; m = T-&gt;length ,n = P-&gt;length;
+    while(i &lt;= m - n){
+            while( j == -1 || (j &lt;n &amp;&amp; T-&gt;pch[i] == P-&gt;pch[j]))
+            i++; j++;
+        }
+        if(j == n) return (i - n); //匹配成功
+        j = next[j];
+    }
+    return -1; //匹配失败
+}
+</code></pre><p><strong>外层循环退出条件:</strong> 我们走到了队伍的尾部，如果还没找到，那这次模式匹配就是失败的，我们就要返回失败。<br><strong>内存循环:</strong> 如果发现队尾相同，我们就增长序列，不断地增长我们地匹配长度，直到匹配成功，退出循环，并返回相应的位置。或者出现了失配，我们就将模式串的指针进行修改，也就是将模式串向前移动，接着进行匹配。<br>然后我们要尝试填充next表 <em>（这能不能叫我们的初始化操作）</em></p>
 <p><strong>基础：</strong> 我们已知next表<br>第0位为-1        第一位为0<br>剩下的位置需要我们自己进行填写。<br>我们首先通过人类的思想进行尝试，我们每次不就是拿出字符串的前面的n位进行比较吗，一点一点尝试就好了。</p>
 <p><img src="https://img-blog.csdnimg.cn/20190330224952223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>接着，我们看这个表，能不能发现，我们在发生失配之前next表当中的相邻的两位相邻只差1，由此我们是不是可以推出next表是可以通过前向进行推导的呢。<br>如果我们把原有的已经匹配的字符串加一位，我们相当于在后缀表达式的后面多加了一位，同样我们为了对应长度，把前缀表达式也增加一位，如果匹配了，那么我们的最大匹配项就多加了一位 <em>（这里不可能有更长的可能，因为如果更长，就已经在前一位发生了失配）</em></p>
 <p>接着我们讨论发生失配的情况，如果发生失配，并不代表着我们没有匹配，只能说明我们不是最大的匹配，和上面的匹配类似，我们沿着next表找到上一位的匹配情况，接着检查我们的失配位置，如果相同，我们就找到了在这个位置的next值，如此递归，直到第一位 <em>（我们这里也就演示的是这种最复杂的情况）</em></p>
 <p>在第6位发生失配，于是找到4，还是失配，接着向前进行，<em>（因为c在每一位都是失配）</em>，所以我们走到2，2指向0，0的值是-1，对他进行+1，得到0，作为有效数据填入。</p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/pictures/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="秦墨涵">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秦墨涵的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/31/pictures/" itemprop="url">pictures</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-31T20:27:17+08:00">
+                2019-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
           
         
       
@@ -925,7 +1056,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
