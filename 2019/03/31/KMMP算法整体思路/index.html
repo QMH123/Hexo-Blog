@@ -79,16 +79,21 @@
 
 
 
-<meta name="description" content="我爱编程！编程使我快乐！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="秦墨涵的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="KMP算法的整体思路序： 刘峤老师今天刚刚讲完KMP算法，基本上是花了四个学时，趁热打铁进行一下总结，找到当时的一些理解误区（关键是循环跳出的时候到底是怎么跳的） 注： 填写next表的操作和对于字符串进行适配的操作接近类似 引入： 暴力破解：串的简单模式匹配 这里很关键的一个概念就是差距，其实整个走的过程就是差距再不断地增大，每次走的过程当中其实差距是不变的，只有等到循环退出 （匹配成功或者是出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMMP算法整体思路">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/KMMP算法整体思路/index.html">
 <meta property="og:site_name" content="秦墨涵的博客">
-<meta property="og:description" content="我爱编程！编程使我快乐！">
+<meta property="og:description" content="KMP算法的整体思路序： 刘峤老师今天刚刚讲完KMP算法，基本上是花了四个学时，趁热打铁进行一下总结，找到当时的一些理解误区（关键是循环跳出的时候到底是怎么跳的） 注： 填写next表的操作和对于字符串进行适配的操作接近类似 引入： 暴力破解：串的简单模式匹配 这里很关键的一个概念就是差距，其实整个走的过程就是差距再不断地增大，每次走的过程当中其实差距是不变的，只有等到循环退出 （匹配成功或者是出">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190330223900441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190330224344381.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190330224952223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-03-31T12:47:12.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="秦墨涵的博客">
-<meta name="twitter:description" content="我爱编程！编程使我快乐！">
+<meta name="twitter:title" content="KMMP算法整体思路">
+<meta name="twitter:description" content="KMP算法的整体思路序： 刘峤老师今天刚刚讲完KMP算法，基本上是花了四个学时，趁热打铁进行一下总结，找到当时的一些理解误区（关键是循环跳出的时候到底是怎么跳的） 注： 填写next表的操作和对于字符串进行适配的操作接近类似 引入： 暴力破解：串的简单模式匹配 这里很关键的一个概念就是差距，其实整个走的过程就是差距再不断地增大，每次走的过程当中其实差距是不变的，只有等到循环退出 （匹配成功或者是出">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190330223900441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -118,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/31/KMMP算法整体思路/">
 
 
 
 
 
-  <title>秦墨涵的博客</title>
+  <title>KMMP算法整体思路 | 秦墨涵的博客</title>
   
 
 
@@ -143,8 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,9 +251,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -279,9 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/31/KMMP算法整体思路/" itemprop="url">KMMP算法整体思路</a></h1>
+          <h1 class="post-title" itemprop="name headline">KMMP算法整体思路</h1>
         
 
         <div class="post-meta">
@@ -331,9 +333,7 @@
       
 
       
-        
-          
-            <h2 id="KMP算法的整体思路"><a href="#KMP算法的整体思路" class="headerlink" title="KMP算法的整体思路"></a>KMP算法的整体思路</h2><p><strong>序：</strong> 刘峤老师今天刚刚讲完KMP算法，基本上是花了四个学时，趁热打铁进行一下总结，找到当时的一些理解误区（关键是循环跳出的时候到底是怎么跳的）</p>
+        <h2 id="KMP算法的整体思路"><a href="#KMP算法的整体思路" class="headerlink" title="KMP算法的整体思路"></a>KMP算法的整体思路</h2><p><strong>序：</strong> 刘峤老师今天刚刚讲完KMP算法，基本上是花了四个学时，趁热打铁进行一下总结，找到当时的一些理解误区（关键是循环跳出的时候到底是怎么跳的）</p>
 <p><strong>注：</strong> 填写next表的操作和对于字符串进行适配的操作接近类似</p>
 <p><strong>引入：</strong> 暴力破解：串的简单模式匹配</p>
 <p>这里很关键的一个概念就是差距，其实整个走的过程就是差距再不断地增大，每次走的过程当中其实差距是不变的，只有等到循环退出 <em>（匹配成功或者是出现失配）</em>，我们把间距加一，然后我们从头开始遍历，虽然我们在目标串上返回的是j = j-k+1，其实这里是间距，我们在这个位置忽略了+0，我们一次一次进行遍历的搜寻</p>
@@ -370,8 +370,6 @@
 <p>接着我们讨论发生失配的情况，如果发生失配，并不代表着我们没有匹配，只能说明我们不是最大的匹配，和上面的匹配类似，我们沿着next表找到上一位的匹配情况，接着检查我们的失配位置，如果相同，我们就找到了在这个位置的next值，如此递归，直到第一位 <em>（我们这里也就演示的是这种最复杂的情况）</em></p>
 <p>在第6位发生失配，于是找到4，还是失配，接着向前进行，<em>（因为c在每一位都是失配）</em>，所以我们走到2，2指向0，0的值是-1，对他进行+1，得到0，作为有效数据填入。</p>
 
-          
-        
       
     </div>
     
@@ -388,167 +386,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/有关于KMP算法的整体思路(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="秦墨涵">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/tx.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="秦墨涵的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/31/有关于KMP算法的整体思路(1)/" itemprop="url">Untitled</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-31T20:29:21+08:00">
-                2019-03-31
-              </time>
+              <a href="/2019/03/31/有关于KMP算法的整体思路(1)/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="KMP算法的整体思路"><a href="#KMP算法的整体思路" class="headerlink" title="KMP算法的整体思路"></a>KMP算法的整体思路</h2><p><strong>序：</strong> 刘峤老师今天刚刚讲完KMP算法，基本上是花了四个学时，趁热打铁进行一下总结，找到当时的一些理解误区（关键是循环跳出的时候到底是怎么跳的）</p>
-<p><strong>注：</strong> 填写next表的操作和对于字符串进行适配的操作接近类似</p>
-<p><strong>引入：</strong> 暴力破解：串的简单模式匹配</p>
-<p>这里很关键的一个概念就是差距，其实整个走的过程就是差距再不断地增大，每次走的过程当中其实差距是不变的，只有等到循环退出 <em>（匹配成功或者是出现失配）</em>，我们把间距加一，然后我们从头开始遍历，虽然我们在目标串上返回的是j = j-k+1，其实这里是间距，我们在这个位置忽略了+0，我们一次一次进行遍历的搜寻</p>
-<p>那么问题来了，我们应该如何降低复杂度，既然我们上次已经知道了前面一部分在我们发生失配前面的部分项已经完成了匹配，我们是否还有必要做这些没有必要的比较，类似于之前对于冒泡排序的改进，我们每次记录上次改变的位置，从而减少比较的次数 <em>（详情自己看PPT）</em></p>
-<p>随之而来的解决方案就是KMP算法，让我们每次尽可能地匹配到原字符串中的内容。<br>由此引入概念：前缀表达式与后缀表达式 前缀表达式就是我们从前面取n个字符得到地字符串 后缀表达式就是我们从后面取出n个字符得到的字符串。<br>用一句话来说这个算法：我们找到我们已知的已经匹配的字符串，找到最多的前后相同的字符串，重新进行对齐。</p>
-<p><strong>我们的操作对象：</strong><br><strong>模式串 ：</strong> 即为我们想要匹配的字符，把模式套入，看是否符合<br><strong>目标串 ：</strong> 我们要尝试在目标串中寻找模式串出现的位置，并且将其返回<br>接下来的·操作当中我们把模式串称为P（pattern） 目标串称为T（target）</p>
-<p><strong>定义：</strong><br><strong>真前缀</strong> 除最后一个字符外，前面所有的字符，从长度为1到n – 1<br><strong>真后缀</strong> 除了第一个字符意外，后面所有的字符，从长度为1到n-1<br><strong>注意误区：</strong> 真后缀也是从左向右读的，不是因为我们是拿的后面的一段就从右向左逆向读取了</p>
-<p><img src="https://img-blog.csdnimg.cn/20190330223900441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>在我们拿到这个字符串，首先我们尝试进行匹配，然后发现第7位是不匹配的，那么我们就可以依次得知，前面比较的目标串与模式串是匹配的，那么我们就要将模式串向后移动，直到找到匹配的位置，（我们此时就将眼光放在前面的6位，因为后面的我们还没有读入，根本不知道是什么样子的）那么我们会移动一位吗？显然不会，根据我们已经遍历过的信息，我们就知道这根本不可能匹配。两位？三位？四位？四位看起来靠谱一些，毕竟我们看到ab已经在这里发生的匹配。</p>
-<p>  这个的确看起来不错，我们找到了匹配项，这样第二次进行匹配的时候，我们就可以从第三位开始进行匹配，明显少吃了很多闭门羹 <em>（连第一位都不一样）</em>。</p>
-<p>  现在我们找到了我们的方法了，就是找到前后匹配相同的项，然后把我们的模式串移动过去不就好了吗，但是我们是怎么进行移动的？</p>
-<p>  <strong>引入：</strong> next表 用于记录模式串每一个小段，模式串的前1个，前2个，前3个。。。。。，因为我们不可能每次都和这次一样，适配了六个，我们这个表要能够记录所有的情况。</p>
-<p>Next表的记录内容是什么？是我们每次的能够发生匹配的最大真前缀与最大真后缀。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190330224344381.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>这里给出一个demo，你能不能根据上面的描述，写出这个对应的next表呢<br>这里的index是我们用来存放next数组的数组下标。<br>有了这个next表，我就知道了我们每次完全匹配的项的最大真前缀与真后缀。既然知道了几项是相同的，那么我怎么把前缀移动到后缀的位置呢，适配长度-最大真前缀长度 = 我们要跳过的距离，6 – 4 = 2，0 + 2 = 2。下一次我们就从数组的第二位开始进行比较 <em>（这样前四项都是相同的，即我们完成了最大匹配）</em></p>
-<p><strong>讨论：</strong> 我们呢什么时候开始移动呢？当然是我们在检查当中发现不匹配的时候，所以前其实我们最后指针指向的是我们发生失配的位置，那么我们就不得不返回前面的位置，才知道我们究竟匹配了几项，这使得我们每次都要通过-1进行访问，所以，我们干脆将next的末尾垫起一位，这样我们在失配项对应的就是匹配项对应的最大真前缀的长度。<br>我们在数组头部添加的项值位-1 <em>（有妙用,后面再说）</em>。</p>
-<p>好了，现在我们尝试进行另外一种解释的方式，第一次我们是通过移动下面的pattern字符串进行解释的，但你不觉得有一些问题，我们还是会做一些无意义的比较，前面的几位都是相同的，我们之后需要比较的部位就是从我们的失配位置开始的，我们可以根据上面做一次等价的变换，移动两个位置，等同于让第四个位置与我们的失配位置的前一位进行对齐，这样我们就可以直接利用next 表中的值，进行移动。每次接着等到出现不一样了再向后进行回溯，毕竟我们在pattern串上的下标一直对应着对应的next。这样逐次进行逼近，直到失配成功，或者我们不断向前进行搜寻，直到第一位 -1.</p>
-<p><strong>p.s.妙用：</strong> 我们之前用的-1这里还是和之前一样+1，得到的就是0，这也是有意义的，证明找不到任何相同的前缀与后缀表达式，我们重新开始进行比较。<br>跳出循环之后，我们再进行后移一格的操作进行比较。</p>
-<pre><code>int KMP(Pstr T, Pstr P,int *next){
-    int i = 0,j = 0; m = T-&gt;length ,n = P-&gt;length;
-    while(i &lt;= m - n){
-            while( j == -1 || (j &lt;n &amp;&amp; T-&gt;pch[i] == P-&gt;pch[j]))
-            i++; j++;
-        }
-        if(j == n) return (i - n); //匹配成功
-        j = next[j];
-    }
-    return -1; //匹配失败
-}
-</code></pre><p><strong>外层循环退出条件:</strong> 我们走到了队伍的尾部，如果还没找到，那这次模式匹配就是失败的，我们就要返回失败。<br><strong>内存循环:</strong> 如果发现队尾相同，我们就增长序列，不断地增长我们地匹配长度，直到匹配成功，退出循环，并返回相应的位置。或者出现了失配，我们就将模式串的指针进行修改，也就是将模式串向前移动，接着进行匹配。<br>然后我们要尝试填充next表 <em>（这能不能叫我们的初始化操作）</em></p>
-<p><strong>基础：</strong> 我们已知next表<br>第0位为-1        第一位为0<br>剩下的位置需要我们自己进行填写。<br>我们首先通过人类的思想进行尝试，我们每次不就是拿出字符串的前面的n位进行比较吗，一点一点尝试就好了。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190330224952223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>接着，我们看这个表，能不能发现，我们在发生失配之前next表当中的相邻的两位相邻只差1，由此我们是不是可以推出next表是可以通过前向进行推导的呢。<br>如果我们把原有的已经匹配的字符串加一位，我们相当于在后缀表达式的后面多加了一位，同样我们为了对应长度，把前缀表达式也增加一位，如果匹配了，那么我们的最大匹配项就多加了一位 <em>（这里不可能有更长的可能，因为如果更长，就已经在前一位发生了失配）</em></p>
-<p>接着我们讨论发生失配的情况，如果发生失配，并不代表着我们没有匹配，只能说明我们不是最大的匹配，和上面的匹配类似，我们沿着next表找到上一位的匹配情况，接着检查我们的失配位置，如果相同，我们就找到了在这个位置的next值，如此递归，直到第一位 <em>（我们这里也就演示的是这种最复杂的情况）</em></p>
-<p>在第6位发生失配，于是找到4，还是失配，接着向前进行，<em>（因为c在每一位都是失配）</em>，所以我们走到2，2指向0，0的值是-1，对他进行+1，得到0，作为有效数据填入。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -558,248 +417,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/Hello-GitHub/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="秦墨涵">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/tx.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="秦墨涵的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/13/Hello-GitHub/" itemprop="url">postHello GitHub</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-13T21:43:23+08:00">
-                2019-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/你好-hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="秦墨涵">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/tx.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="秦墨涵的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/13/你好-hexo/" itemprop="url">post你好,hexo</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-13T20:12:45+08:00">
-                2019-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -807,6 +429,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -827,8 +453,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -872,6 +507,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP算法的整体思路"><span class="nav-number">1.</span> <span class="nav-text">KMP算法的整体思路</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1012,6 +663,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
