@@ -79,16 +79,21 @@
 
 
 
-<meta name="description" content="我爱编程！编程使我快乐！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="秦墨涵的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="KMP算法的整体思路序： 刘峤老师今天刚刚讲完KMP算法，基本上是花了四个学时，趁热打铁进行一下总结，找到当时的一些理解误区（关键是循环跳出的时候到底是怎么跳的） 注： 填写next表的操作和对于字符串进行适配的操作接近类似 引入： 暴力破解：串的简单模式匹配 这里很关键的一个概念就是差距，其实整个走的过程就是差距再不断地增大，每次走的过程当中其实差距是不变的，只有等到循环退出 （匹配成功或者是出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP算法整体思路">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/KMP算法整体思路/index.html">
 <meta property="og:site_name" content="秦墨涵的博客">
-<meta property="og:description" content="我爱编程！编程使我快乐！">
+<meta property="og:description" content="KMP算法的整体思路序： 刘峤老师今天刚刚讲完KMP算法，基本上是花了四个学时，趁热打铁进行一下总结，找到当时的一些理解误区（关键是循环跳出的时候到底是怎么跳的） 注： 填写next表的操作和对于字符串进行适配的操作接近类似 引入： 暴力破解：串的简单模式匹配 这里很关键的一个概念就是差距，其实整个走的过程就是差距再不断地增大，每次走的过程当中其实差距是不变的，只有等到循环退出 （匹配成功或者是出">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190330223900441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190330224344381.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190330224952223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-03-31T12:55:16.764Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="秦墨涵的博客">
-<meta name="twitter:description" content="我爱编程！编程使我快乐！">
+<meta name="twitter:title" content="KMP算法整体思路">
+<meta name="twitter:description" content="KMP算法的整体思路序： 刘峤老师今天刚刚讲完KMP算法，基本上是花了四个学时，趁热打铁进行一下总结，找到当时的一些理解误区（关键是循环跳出的时候到底是怎么跳的） 注： 填写next表的操作和对于字符串进行适配的操作接近类似 引入： 暴力破解：串的简单模式匹配 这里很关键的一个概念就是差距，其实整个走的过程就是差距再不断地增大，每次走的过程当中其实差距是不变的，只有等到循环退出 （匹配成功或者是出">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190330223900441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDIxNTIzOQ==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -118,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/31/KMP算法整体思路/">
 
 
 
 
 
-  <title>秦墨涵的博客</title>
+  <title>KMP算法整体思路 | 秦墨涵的博客</title>
   
 
 
@@ -143,8 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,9 +251,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -279,9 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/31/KMP算法整体思路/" itemprop="url">KMP算法整体思路</a></h1>
+          <h1 class="post-title" itemprop="name headline">KMP算法整体思路</h1>
         
 
         <div class="post-meta">
@@ -331,9 +333,7 @@
       
 
       
-        
-          
-            <h2 id="KMP算法的整体思路"><a href="#KMP算法的整体思路" class="headerlink" title="KMP算法的整体思路"></a>KMP算法的整体思路</h2><p><strong>序：</strong> 刘峤老师今天刚刚讲完KMP算法，基本上是花了四个学时，趁热打铁进行一下总结，找到当时的一些理解误区（关键是循环跳出的时候到底是怎么跳的）</p>
+        <h2 id="KMP算法的整体思路"><a href="#KMP算法的整体思路" class="headerlink" title="KMP算法的整体思路"></a>KMP算法的整体思路</h2><p><strong>序：</strong> 刘峤老师今天刚刚讲完KMP算法，基本上是花了四个学时，趁热打铁进行一下总结，找到当时的一些理解误区（关键是循环跳出的时候到底是怎么跳的）</p>
 <p><strong>注：</strong> 填写next表的操作和对于字符串进行适配的操作接近类似</p>
 <p><strong>引入：</strong> 暴力破解：串的简单模式匹配</p>
 <p>这里很关键的一个概念就是差距，其实整个走的过程就是差距再不断地增大，每次走的过程当中其实差距是不变的，只有等到循环退出 <em>（匹配成功或者是出现失配）</em>，我们把间距加一，然后我们从头开始遍历，虽然我们在目标串上返回的是j = j-k+1，其实这里是间距，我们在这个位置忽略了+0，我们一次一次进行遍历的搜寻</p>
@@ -370,8 +370,6 @@
 <p>接着我们讨论发生失配的情况，如果发生失配，并不代表着我们没有匹配，只能说明我们不是最大的匹配，和上面的匹配类似，我们沿着next表找到上一位的匹配情况，接着检查我们的失配位置，如果相同，我们就找到了在这个位置的next值，如此递归，直到第一位 <em>（我们这里也就演示的是这种最复杂的情况）</em></p>
 <p>在第6位发生失配，于是找到4，还是失配，接着向前进行，<em>（因为c在每一位都是失配）</em>，所以我们走到2，2指向0，0的值是-1，对他进行+1，得到0，作为有效数据填入。</p>
 
-          
-        
       
     </div>
     
@@ -388,131 +386,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/Hello-GitHub/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="秦墨涵">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/tx.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="秦墨涵的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/13/Hello-GitHub/" itemprop="url">postHello GitHub</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-13T21:43:23+08:00">
-                2019-03-13
-              </time>
+              <a href="/2019/03/13/Hello-GitHub/" rel="next" title="postHello GitHub">
+                <i class="fa fa-chevron-left"></i> postHello GitHub
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -522,129 +417,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/你好-hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="秦墨涵">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/tx.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="秦墨涵的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/13/你好-hexo/" itemprop="url">post你好,hexo</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-13T20:12:45+08:00">
-                2019-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -652,6 +429,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -672,8 +453,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -717,6 +507,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP算法的整体思路"><span class="nav-number">1.</span> <span class="nav-text">KMP算法的整体思路</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -857,6 +663,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
