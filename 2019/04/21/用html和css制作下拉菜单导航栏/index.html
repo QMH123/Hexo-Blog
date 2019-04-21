@@ -1,0 +1,402 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="0 error 0 warning">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content>
+
+
+    <meta name="description" content="使用HTML和CSS制作下拉导航栏     平时浏览网页时，我们常常能在各种网页的导航栏部分见到如效果图所示的导航栏，通过上网搜集资料并浏览别人写的博客，在此总结一下方法和其中的一些注意事项。 ...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>用html和css制作下拉菜单导航栏 | 0 error 0 warning</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="0 error 0 warning" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="秦墨涵">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">0 error 0 warning</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="用html和css制作下拉菜单导航栏">
+            
+	            用html和css制作下拉菜单导航栏
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/04/21</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="使用HTML和CSS制作下拉导航栏"><a href="#使用HTML和CSS制作下拉导航栏" class="headerlink" title="使用HTML和CSS制作下拉导航栏"></a>使用HTML和CSS制作下拉导航栏</h2><p>  <img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190420232321.png" alt="导航栏总体框架"><br>   平时浏览网页时，我们常常能在各种网页的导航栏部分见到如效果图所示的导航栏，通过上网搜集资料并浏览别人写的博客，在此总结一下方法和其中的一些注意事项。<br>   导航栏总体架构<br> 使用  &lt; nav &gt;  标签，其中嵌套&lt; ul &gt;无序列表来构建总体框架生成一二三级菜单。</p>
+<pre><code>&lt;nav&gt;       
+&lt;ul&gt;           
+&lt;li&gt;&lt;a href=&quot;#&quot;&gt;导航一&lt;/a&gt;                
+    &lt;ul&gt;                   
+     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;&lt;/li&gt;                   
+     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;&lt;/li&gt;                   
+     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;&lt;/li&gt;                   
+     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;&lt;/li&gt;                
+     &lt;/ul&gt;            
+&lt;/li&gt;            
+&lt;li&gt;&lt;a href=&quot;#&quot;&gt;导航二&lt;/a&gt;                
+  &lt;ul&gt;                    
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;&lt;/li&gt;                    
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;&lt;/li&gt;                    
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;&lt;/li&gt;                    
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;&lt;/li&gt;                
+  &lt;/ul&gt;           
+&lt;/li&gt;            
+&lt;li&gt;&lt;a href=&quot;#&quot;&gt;导航三&lt;/a&gt;                
+&lt;ul&gt;                    
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;&lt;/li&gt;                    
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;                        
+    &lt;ul&gt;
+    &lt;a href=&quot;#&quot;&gt;三级导航&lt;/a&gt;                            
+    &lt;a href=&quot;#&quot;&gt;三级导航&lt;/a&gt;                            
+    &lt;a href=&quot;#&quot;&gt;三级导航&lt;/a&gt;                            
+    &lt;a href=&quot;#&quot;&gt;三级导航&lt;/a&gt;                       
+    &lt;/ul&gt;                    
+  &lt;/li&gt;                    
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;&lt;/li&gt;                    
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二级导航&lt;/a&gt;&lt;/li&gt;                
+&lt;/ul&gt;                  
+&lt;/ul&gt;   
+&lt;/nav&gt;
+</code></pre><p>这样生成了一个不含任何装饰的导航栏<br><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%AA%E5%9B%BE20190421123810.png" alt="在这里插入图片描述"></p>
+<p>使用html将基本框架搭建完成后，我们使用css样式来达到我们想要的效果。首先我们给每一个&lt; ul &gt;和&lt; li &gt;设计样式。<br>在这里我们先了解一些css属性<br>1.text-aling:<br>    他可以有left right center 三个值，分别代表设置块级元素内文本的水平对齐方式，分别代表左对齐，中间对齐，右对齐。</p>
+<p>2.display:<br>display:none<br>将元素设置为none的时候既不会占据空间，也无法显示，相当于该元素不存在。</p>
+<p>display:inline<br>将元素作为行内元素显示，它可以让行内显示为块的元素，变为行内显示，例如<br>&lt; div&gt; DIV1 &lt; /div&gt;<br>&lt; div&gt; DIV2 &lt; /div&gt;<br>这里DIV1和DIV2分别占一行，但是你给他们加上属性后变了<br>&lt;  div style= “display:inline “ &gt; DIV1 &lt; /div&gt;<br>&lt;  div style= “display:inline “ &gt; DIV2 &lt; /div&gt;<br>DIV1和DIV2这时候显示在同一行了</p>
+<p>display:block<br>设置元素为块状元素，并独占一行。</p>
+<p>display:inline-table<br>inline-table得到的是，外面是“内联盒子”，里面是“table盒子”。<br>得到的是一个可以和文字在一行中显示的表格。</p>
+<p>3.position：<br>position 属性规定元素的定位类型。<br>absolute值<br>生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。<br>元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。<br>relitive值<br>生成相对定位的元素，相对于其正常位置进行定位。<br>因此，”left:20” 会向元素本来正常所在的 LEFT 位置添加 20 像素。</p>
+<p>4.伪选择器: hover<br>选择鼠标指针浮动在其上的元素，并设置其样式</p>
+<p>5.伪选择器：after 与clear 搭配清除浮动<br>首先为什么清除浮动？<br>在这里我们举例说明<br> 块状元素，会钻进浮动元素的下面，被浮动元素所覆盖</p>
+<p>了解完这些知识后我们开始调整css样式</p>
+<pre><code>nav{    
+margin :100px aotu;    
+text-align: center;
+}
+
+nav ul{    
+border-radius: 10px;   
+background: linear-gradient(to bottom, #efefef ,#bbbbbb);    
+padding:0 20px;    
+display: inline-table;    
+position: relative;    
+box-shadow: 1px 1px 3px #666;    
+}
+
+nav ul ul{    
+display: none;
+}
+
+nav ul li {  float: right;}
+
+nav ul li a{    
+display: block;    
+padding: 25px 40px;   
+ color: #000;    
+ text-decoration: none;    
+ font-family: &quot;微软雅黑&quot;；
+ }
+</code></pre><p>首先用text-aling设置导航栏内文本居中。<br>然后设计第一级导航栏的样式<br>其中border-radius属性可以给块状元素添加圆角边框来达到美化效果<br>使用box-shadow属性给块状元素的附近添加阴影效果<br>通过padding 来设置导航栏的内外边距<br>设置第一级导航栏中&lt; a &gt;标签的长宽，文本的字体，颜色，并将其作为一个块状区域显示。<br>将第二级导航栏的display设置为none，将其隐藏。然后我们打开浏览器显示效果。<br><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190421195512.png" alt="初导航栏步"><br>我们发现第一级导航并没有在同一行内显示，这是因为在css中我们将他们都显示为了块状元素，他们之间会自动换行，解决方法是将第一级导航栏的每一项设置为浮动元素，使其在一行内显示。</p>
+<p>经过这番操作后，导航栏总体框架已经形成。</p>
+<p><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190421200152.png" alt="在这里插入图片描述"></p>
+<p>我们可以看出此时导航栏的外形与最终形成的版本外形上已无任何区别，只是当鼠标悬停在导航栏上时不会显示任何的效果。</p>
+<p>现在我们通过hover来添加当鼠标悬停在导航栏上时的动态效果</p>
+<pre><code>nav ul li:hover {    
+background: linear-gradient(to bottom,#4f5964,#5f6975);
+}
+nav ul li:hover a{    color:#FFF;}
+</code></pre><p>设置鼠标悬停在导航栏上时，被悬停的区域背景变为深色，其中的文本变为白色，给用户此项被选中的交互信息。<br><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190421201956.png" alt="鼠标悬停效果"><br>然后我们把被选中的第一级导航栏中的&lt; ul&gt;的display设置为block,使其作为一个块状区域重新显示。调整完这一步后，我们重新把鼠标悬停在导航上。</p>
+<p><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190421202907.png" alt="在这里插入图片描述"><br>我们发现还是没有得到我们想要的效果，第二级导航栏仍然在一行内显示，这是因为我们还未对第二级导航栏的css进行设置，所以他自动继承了他的父元素的属性，成为了浮动元素，现在我们开始对第二级导航栏的css样式进行设置。</p>
+<pre><code>nav ul ul {    
+background: #5f6975;    
+border-radius: 0;    
+position: absolute;    
+top: 100%;    
+padding: 0;}
+
+nav ul ul li{    
+float: none;    
+border-top: 1px solid #6b727c;   
+ border-bottom: 1px solid #575f6a;}
+</code></pre><p>我们将第二级导航栏的position值设置为absolute,并将top设置为100%，这表明了相对于第二级导航栏的父级元素，他会在其正下方出现，我们将border-radius和padding重新设置为0来消除来自父级元素的继承。</p>
+<p>然后将第二级导航栏中的每一项的float设置为none,这样列表的每一项就都会在不同行显示，为了美观我们给列表的每一项的上下边框设置颜色便于区分。现在再用浏览器打开网页，二级菜单的所有效果就初步实现。但第三级导航栏自动继承了第二级导航栏的css属性，显示在其下方。</p>
+<p><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190421204330.png" alt="第三级导航栏浮动错误"></p>
+<p>我们希望第三级导航栏能在我们所选中的第二级导航栏的右边显示，于是我们再次设置其css样式。</p>
+<pre><code>nav ul ul li a:hover{    background: #4b545f;}
+
+nav ul ul ul {    
+ width: 100%;   
+ position: absolute;    
+ left: 100%;    
+ top: 25%;}
+</code></pre><p>我们设置第三级导航栏相对其父级元素的位置为其右方，但在设置top的值时需注意，在本例中我们的第三级菜单在第二项，其中父级菜单有4项，所有为了让其显示在他正右方，我们将top设置为1/4，即25%。<br>由此我们可推出公式，若其父级菜单有n项，而他处于其父级菜单的第m项中，为了能将其显示在他父级元素的正右方，我们可以将top设置为（m-1)/n。</p>
+<p>此时我们的导航栏便全部制作完成。</p>
+<p>写在最后：首先再次声明这边博客所涉及的内容并非原创，而是一篇学习笔记，其中总结了我在学习过程中不懂的地方，遇到的问题，并是怎样一步步解决这些问题的。如果发现仍有问题，欢迎找我解决，一起探讨。</p>
+<p>附上代码地址： <a href="https://github.com/QMH123/Code.git" target="_blank" rel="noopener">仓库地址</a></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2019/03/31/KMP算法整体思路/" class="next-post btn btn-default" title="KMP算法整体思路">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">KMP算法整体思路</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用HTML和CSS制作下拉导航栏"><span class="toc-text">使用HTML和CSS制作下拉导航栏</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
