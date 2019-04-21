@@ -172,7 +172,7 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="使用HTML和CSS制作下拉导航栏"><a href="#使用HTML和CSS制作下拉导航栏" class="headerlink" title="使用HTML和CSS制作下拉导航栏"></a>使用HTML和CSS制作下拉导航栏</h2><p>  <img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190420232321.png" alt="导航栏总体框架"><br>   平时浏览网页时，我们常常能在各种网页的导航栏部分见到如效果图所示的导航栏，通过上网搜集资料并浏览别人写的博客，在此总结一下方法和其中的一些注意事项。<br>   导航栏总体架构<br> 使用  &lt; nav &gt;  标签，其中嵌套&lt; ul &gt;无序列表来构建总体框架生成一二三级菜单。</p>
+        <h2 id="使用HTML和CSS制作下拉导航栏"><a href="#使用HTML和CSS制作下拉导航栏" class="headerlink" title="使用HTML和CSS制作下拉导航栏"></a>使用HTML和CSS制作下拉导航栏</h2><p>  <img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190420232321.png" alt="导航栏总体框架"><br>   平时浏览网页时，我们常常能在各种网页的导航栏部分见到如效果图所示的导航栏，通过上网搜集资料并浏览别人写的博客，在此总结一下方法和其中的一些注意事项。<br>   <strong>导航栏总体架构</strong><br> 使用  &lt; nav &gt;  标签，其中嵌套&lt; ul &gt;无序列表来构建总体框架生成一二三级菜单。</p>
 <pre><code>&lt;nav&gt;       
 &lt;ul&gt;           
 &lt;li&gt;&lt;a href=&quot;#&quot;&gt;导航一&lt;/a&gt;                
@@ -208,15 +208,15 @@
 &lt;/ul&gt;   
 &lt;/nav&gt;
 </code></pre><p>这样生成了一个不含任何装饰的导航栏<br><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%AA%E5%9B%BE20190421123810.png" alt="在这里插入图片描述"></p>
-<p>使用html将基本框架搭建完成后，我们使用css样式来达到我们想要的效果。首先我们给每一个&lt; ul &gt;和&lt; li &gt;设计样式。<br>在这里我们先了解一些css属性<br>1.text-aling:<br>    他可以有left right center 三个值，分别代表设置块级元素内文本的水平对齐方式，分别代表左对齐，中间对齐，右对齐。</p>
-<p>2.display:<br>display:none<br>将元素设置为none的时候既不会占据空间，也无法显示，相当于该元素不存在。</p>
+<p>使用html将基本框架搭建完成后，我们使用css样式来达到我们想要的效果。首先我们给每一个&lt; ul &gt;和&lt; li &gt;设计样式。</p>
+<p>在这里我们先了解一些css属性<br><strong>1.text-aling:</strong><br>    他可以有left right center 三个值，分别代表设置块级元素内文本的水平对齐方式，分别代表左对齐，中间对齐，右对齐。</p>
+<p><strong>2.display:</strong><br>display:none<br>将元素设置为none的时候既不会占据空间，也无法显示，相当于该元素不存在。</p>
 <p>display:inline<br>将元素作为行内元素显示，它可以让行内显示为块的元素，变为行内显示，例如<br>&lt; div&gt; DIV1 &lt; /div&gt;<br>&lt; div&gt; DIV2 &lt; /div&gt;<br>这里DIV1和DIV2分别占一行，但是你给他们加上属性后变了<br>&lt;  div style= “display:inline “ &gt; DIV1 &lt; /div&gt;<br>&lt;  div style= “display:inline “ &gt; DIV2 &lt; /div&gt;<br>DIV1和DIV2这时候显示在同一行了</p>
 <p>display:block<br>设置元素为块状元素，并独占一行。</p>
 <p>display:inline-table<br>inline-table得到的是，外面是“内联盒子”，里面是“table盒子”。<br>得到的是一个可以和文字在一行中显示的表格。</p>
-<p>3.position：<br>position 属性规定元素的定位类型。<br>absolute值<br>生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。<br>元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。<br>relitive值<br>生成相对定位的元素，相对于其正常位置进行定位。<br>因此，”left:20” 会向元素本来正常所在的 LEFT 位置添加 20 像素。</p>
-<p>4.伪选择器: hover<br>选择鼠标指针浮动在其上的元素，并设置其样式</p>
-<p>5.伪选择器：after 与clear 搭配清除浮动<br>首先为什么清除浮动？<br>在这里我们举例说明<br> 块状元素，会钻进浮动元素的下面，被浮动元素所覆盖</p>
-<p>了解完这些知识后我们开始调整css样式</p>
+<p><strong>3.position：</strong><br>position 属性规定元素的定位类型。<br>absolute值<br>生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。<br>元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。<br>relitive值<br>生成相对定位的元素，相对于其正常位置进行定位。<br>因此，”left:20” 会向元素本来正常所在的 LEFT 位置添加 20 像素。</p>
+<p><strong>4.伪选择器: hover</strong><br>选择鼠标指针浮动在其上的元素，并设置其样式</p>
+<p>解完这些知识后我们开始调整css样式</p>
 <pre><code>nav{    
 margin :100px aotu;    
 text-align: center;
@@ -244,7 +244,12 @@ padding: 25px 40px;
  text-decoration: none;    
  font-family: &quot;微软雅黑&quot;；
  }
-</code></pre><p>首先用text-aling设置导航栏内文本居中。<br>然后设计第一级导航栏的样式<br>其中border-radius属性可以给块状元素添加圆角边框来达到美化效果<br>使用box-shadow属性给块状元素的附近添加阴影效果<br>通过padding 来设置导航栏的内外边距<br>设置第一级导航栏中&lt; a &gt;标签的长宽，文本的字体，颜色，并将其作为一个块状区域显示。<br>将第二级导航栏的display设置为none，将其隐藏。然后我们打开浏览器显示效果。<br><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190421195512.png" alt="初导航栏步"><br>我们发现第一级导航并没有在同一行内显示，这是因为在css中我们将他们都显示为了块状元素，他们之间会自动换行，解决方法是将第一级导航栏的每一项设置为浮动元素，使其在一行内显示。</p>
+</code></pre><p>首先用text-aling设置导航栏内文本居中。<br>然后设计第一级导航栏的样式</p>
+<p>其中border-radius属性可以给块状元素添加圆角边框来达到美化效果</p>
+<p>使用box-shadow属性给块状元素的附近添加阴影效果</p>
+<p>过padding 来设置导航栏的内外边距</p>
+<p>设置第一级导航栏中&lt; a &gt;标签的长宽，文本的字体，颜色，并将其作为一个块状区域显示。</p>
+<p>将第二级导航栏的display设置为none，将其隐藏。然后我们打开浏览器显示效果。<br><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190421195512.png" alt="初导航栏步"><br>我们发现第一级导航并没有在同一行内显示，这是因为在css中我们将他们都显示为了块状元素，他们之间会自动换行，解决方法是将第一级导航栏的每一项设置为浮动元素，使其在一行内显示。</p>
 <p>经过这番操作后，导航栏总体框架已经形成。</p>
 <p><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190421200152.png" alt="在这里插入图片描述"></p>
 <p>我们可以看出此时导航栏的外形与最终形成的版本外形上已无任何区别，只是当鼠标悬停在导航栏上时不会显示任何的效果。</p>
