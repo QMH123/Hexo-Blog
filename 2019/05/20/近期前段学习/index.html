@@ -19,10 +19,8 @@
     <meta name="keywords" content>
 
 
-    <meta name="description" content="CSS为元素边框定义了众多样式
-1.边框样式-border-style
-虚线框dotted 点dashed 虚线
-实线框solid 实线框double 双线框groove 立体凹槽ridge 立...">
+    <meta name="description" content="如何在网页布局时在两边做出留白效果通常我们打开一个网页时，经常发现网页设计者为了顾全网页的美观性会将网页的两边留出一些空白。那么如何使用css和html实现这种效果呢？
+我们在css样式表中找到...">
 
 
 
@@ -34,7 +32,7 @@
     <!--Title-->
 
 
-<title>用CSS设计边框样式 | 0 error 0 warning</title>
+<title>近期前段学习 | 0 error 0 warning</title>
 
 
     <link rel="alternate" href="/atom.xml" title="0 error 0 warning" type="application/atom+xml">
@@ -139,9 +137,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="用CSS设计边框样式">
+        <h1 id="近期前段学习">
             
-	            用CSS设计边框样式
+	            近期前段学习
             
         </h1>
         <div class="post-meta">
@@ -165,7 +163,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/05/12</span>
+            <span class="date-meta">2019/05/20</span>
         </span>
         
     
@@ -175,32 +173,19 @@
     </div>
     
     <div class="post-body post-content">
-        <p><strong>CSS为元素边框定义了众多样式</strong></p>
-<p><strong>1.边框样式-border-style</strong></p>
-<p><strong>虚线框</strong><br>dotted 点<br>dashed 虚线</p>
-<p><strong>实线框</strong><br>solid 实线框<br>double 双线框<br>groove 立体凹槽<br>ridge 立体凸槽<br>inset 立体凸边<br>outset 立体凹边</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">p.dotted &#123;border-style: dotted&#125;</span><br><span class="line">p.dashed &#123;border-style: dashed&#125;</span><br><span class="line">p.solid &#123;border-style: solid&#125;</span><br><span class="line">p.double &#123;border-style: double&#125;</span><br><span class="line">p.groove &#123;border-style: groove&#125;</span><br><span class="line">p.ridge &#123;border-style: ridge&#125;</span><br><span class="line">p.inset &#123;border-style: inset&#125;</span><br><span class="line">p.outset &#123;border-style: outset&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<p>定义样式效果如下<br><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%AA%E5%9B%BE20190512180617.png" alt="各类边框效果"></p>
-<p><strong>2.边框颜色和宽度</strong></p>
-<p><strong>boder-color</strong>属性可以定义边框的颜色</p>
-<p><strong>boder-width</strong>属性可以定义边框的粗细</p>
-<p><strong>定义单边框的样式</strong></p>
-<p>border-top/right/left/bottom-color可以定义单边框的颜色<br>border-top/right/left/bottom-width可以定义单边框的宽度</p>
-<p><strong>同一个边框也可以配合使用不同的样式</strong></p>
-<p>border-style: solid dashed dotted double ;<br>表示上边实线，右边虚线，底边点线，左边双线</p>
-<p>border-width : 10px 20px 30px 40px ;<br>顶边10px 右边20px 下边30px  左边 40px</p>
-<p>border-color: red blue green yellow;<br>上边红色 右边蓝色 下边绿色 左边黄色<br>记忆顺序：上右下左</p>
-<p><strong>定义圆角边框</strong><br>使用CSS中<strong>border-radius</strong>属性，使用他可以设计圆角样式<br>border-radius属性可包含两个参数值<br>border-radius:10px;</p>
-<p><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%AA%E5%9B%BE20190512214332.png" alt="在这里插入图片描述"></p>
-<p>border-radius: 50%;</p>
-<p><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%AA%E5%9B%BE20190512214255.png" alt="在这里插入图片描述"></p>
-<p><strong>为边框添加阴影效果</strong><br>使用<strong>box-shadow</strong>属性为边框添加阴影效果</p>
-<p>标准用法</p>
-<p>box-shadow: 10px 20px 20px #888888;</p>
-<p>三个参数分别为阴影水平偏移、垂直偏移，以及阴影大小（及阴影模糊程度）<br>以及阴影颜色</p>
-<p>效果如下图所示</p>
-<p><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%AA%E5%9B%BE20190512215616.png" alt="在这里插入图片描述"></p>
-<p>同样也可以设计阴影叠加效果</p>
+        <h2 id="如何在网页布局时在两边做出留白效果"><a href="#如何在网页布局时在两边做出留白效果" class="headerlink" title="如何在网页布局时在两边做出留白效果"></a><strong>如何在网页布局时在两边做出留白效果</strong></h2><p>通常我们打开一个网页时，经常发现网页设计者为了顾全网页的美观性会将网页的两边留出一些空白。<br><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%AA%E5%9B%BE20190520200105.png" alt="在这里插入图片描述"><br>那么如何使用css和html实现这种效果呢？</p>
+<p>我们在css样式表中找到最外层的容器如body。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">body&#123;	</span><br><span class="line">max-width: 1800px;	</span><br><span class="line">margin: 0 auto;</span><br><span class="line">&lt;/span&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为其设置最大宽度，然后将其上下外边距设为0，左右设置为auto，即自适应居中对齐。这样就实现了网页整体居中左右留白的效果。</p>
+<h2 id="如何设置透明背景"><a href="#如何设置透明背景" class="headerlink" title="如何设置透明背景"></a>如何设置透明背景</h2><p>有时我们想在原有整体网页的背景上加一些其他内容，但是想让这些内容的背景与原网页背景一致，只是添加了一些透明效果。例如下图所示<br><img src="http://pqank7wwz.bkt.clouddn.com/QQ%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%AA%E5%9B%BE20190520201539.png" alt="在这里插入图片描述"><br>如何通过html和css来实现这个效果呢？</p>
+<p>这里我们用到了background的rgba值<br>RGB就是红色R+绿色G+蓝色B，RGBA说得简单一点就是在RGB的基础上加进了一个通道Alpha.</p>
+<p>语法: 以上R、G、B三个参数，正整数值的取值范围为：0 - 255。</p>
+<p>R：红色值。正整数 | 百分数</p>
+<p>G：绿色值。正整数 | 百分数</p>
+<p>B：蓝色值。正整数| 百分数</p>
+<p>A：透明度。取值0~1之间</p>
+<p>用RGB的参数调出我们所想要的背景色，再使用A为其设置透明度即可。</p>
+<p>如    background: rgba(78, 77, 77, 0.5);</p>
 
     </div>
     
@@ -218,15 +203,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/05/20/近期前段学习/" class="pre-post btn btn-default" title="近期前段学习">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">近期前段学习</span>
-        </a>
     
-    
-        <a href="/2019/05/12/使用CSS设计文本样式/" class="next-post btn btn-default" title="使用CSS设计文本样式">
+        <a href="/2019/05/12/用CSS设计边框样式/" class="next-post btn btn-default" title="用CSS设计边框样式">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">使用CSS设计文本样式</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">用CSS设计边框样式</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -269,7 +249,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <p>暂无目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何在网页布局时在两边做出留白效果"><span class="toc-text">如何在网页布局时在两边做出留白效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何设置透明背景"><span class="toc-text">如何设置透明背景</span></a></li></ol>
         
     </div>
 </aside>
